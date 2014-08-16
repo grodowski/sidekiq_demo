@@ -8,7 +8,10 @@ class Image < ActiveRecord::Base
     end
     
     def fetch_demo 
-      
+      100.times do |n|
+        Delayed::Job.enqueue DjCreateImageWorker.new(n)
+        SidekiqCreateImageWorker.perform_async(n)
+      end
     end
   end  
 end
