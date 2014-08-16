@@ -1,0 +1,1 @@
+MY_LOGGER = Logger.new 'async.log'
